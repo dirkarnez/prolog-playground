@@ -1,6 +1,6 @@
 prolog-playground
 =================
-From [The GNU Prolog web site](http://www.gprolog.org/) official code sample, compilable.
+From [The GNU Prolog web site](http://www.gprolog.org/) official code sample(`GNU-Prolog\examples\ExamplesC`), compilable.
 
 ### Notes
 - Use [The GNU Prolog web site](http://www.gprolog.org/) instead of [SWI-Prolog](https://www.swi-prolog.org/)
