@@ -2,8 +2,8 @@
  * GNU Prolog                                                              *
  *                                                                         *
  * Part  : foreign facility test                                           *
- * File  : new_main.pl                                                     *
- * Descr.: test file                                                       *
+ * File  : new_main_c.c                                                    *
+ * Descr.: test file - C part                                              *
  * Author: Daniel Diaz                                                     *
  *                                                                         *
  * Copyright (C) 1999-2021 Daniel Diaz                                     *
@@ -36,16 +36,86 @@
  *-------------------------------------------------------------------------*/
 
 
-parent(bob, mary).
-parent(jane, mary).
-parent(mary, peter).
-parent(paul, peter).
-parent(peter, john).
+#include <stdio.h>
+#include <string.h>
 
-anc(X, Y):-
-	parent(X, Y).
+#define __GPROLOG_FOREIGN_STRICT__
+#include "gprolog.h"
 
-anc(X, Z):-
-	parent(X, Y),
-	anc(Y, Z).
+
+/*---------------------------------*
+ * Constants                       *
+ *---------------------------------*/
+
+/*---------------------------------*
+ * Type Definitions                *
+ *---------------------------------*/
+
+/*---------------------------------*
+ * Global Variables                *
+ *---------------------------------*/
+
+/*---------------------------------*
+ * Function Prototypes             *
+ *---------------------------------*/
+
+
+
+
+/*-------------------------------------------------------------------------*
+ * MAIN                                                                    *
+ *                                                                         *
+ * See comments in EnginePl/main.c about the use of the wrapper function.  *
+ *-------------------------------------------------------------------------*/
+static int
+Main_Wrapper(int argc, char *argv[])
+{
+  int func;
+  PlTerm arg[10];
+  char str[100];
+  char *sol[100];
+  int i, nb_sol = 0;
+  PlBool res;
+
+  Pl_Start_Prolog(argc, argv);
+
+  func = Pl_Find_Atom("anc");
+  for (;;)
+    {
+      printf("\nEnter a name (or 'end' to finish): ");
+      fflush(stdout);
+      if (scanf("%s", str))	/* avoid gcc warning warn_unused_result */
+	;
+
+      if (strcmp(str, "end") == 0)
+	break;
+
+      Pl_Query_Begin(PL_TRUE);
+
+      arg[0] = Pl_Mk_Variable();
+      arg[1] = Pl_Mk_String(str);
+      nb_sol = 0;
+      res = Pl_Query_Call(func, 2, arg);
+      while (res)
+	{
+	  sol[nb_sol++] = Pl_Rd_String(arg[0]);
+	  res = Pl_Query_Next_Solution();
+	}
+      Pl_Query_End(PL_RECOVER);
+
+      for (i = 0; i < nb_sol; i++)
+	printf("  solution: %s\n", sol[i]);
+      printf("%d solution(s)\n", nb_sol);
+    }
+
+  Pl_Stop_Prolog();
+  return 0;
+}
+
+
+int
+main(int argc, char *argv[])
+{
+  return Main_Wrapper(argc, argv);
+}
 

@@ -1,9 +1,9 @@
 prolog-playground
 =================
+From [The GNU Prolog web site](http://www.gprolog.org/) official code sample, compilable.
 
-### Using
-- `swipl-8.4.3-1.x64\bin\swipl.exe`
+### Notes
+- Use [The GNU Prolog web site](http://www.gprolog.org/) instead of [SWI-Prolog](https://www.swi-prolog.org/)
 
-### Run in `swipl.exe`
-1. `["D:\\Code Projects\\prolog-playground\\main.pl"].`
-2. `colorify(A,B,C,D,E).`
+### Tutorials
+- [**Prolog 语言入门教程 - 阮一峰的网络日志**](https://www.ruanyifeng.com/blog/2019/01/prolog.html)
