@@ -10,4 +10,6 @@ From [The GNU Prolog web site](http://www.gprolog.org/) official code sample(`GN
 
 ### Tutorials
 - [**Prolog 语言入门教程 - 阮一峰的网络日志**](https://www.ruanyifeng.com/blog/2019/01/prolog.html)
+- [My Journey into CLP(FD): A Constraint Logic Programming Sketch | by Kenichi Sasagawa | Medium](https://medium.com/@kenichisasagawa/my-journey-into-clp-fd-a-constraint-logic-programming-sketch-cea34f1648e4)
+
 
