@@ -13,3 +13,9 @@ From [The GNU Prolog web site](http://www.gprolog.org/) official code sample(`GN
 - [My Journey into CLP(FD): A Constraint Logic Programming Sketch | by Kenichi Sasagawa | Medium](https://medium.com/@kenichisasagawa/my-journey-into-clp-fd-a-constraint-logic-programming-sketch-cea34f1648e4)
 
 
+
+```
+export PATH="$PATH:/usr/local/bin:/usr/bin:/bin:/mingw64/bin:/c/Users/19081126D/Downloads/GNU-Prolog/bin/" && gcc -shared -fPIC -o main.dll main.o -static-libgcc -l:libbips_fd.a -llinedit -lengine_fd -lbips_pl -lengine_pl -L/c/Users/19081126D/Downloads/GNU-Prolog/lib -L/mingw64/lib -I/mingw64/include
+
+export PATH="$PATH:/usr/local/bin:/usr/bin:/bin:/mingw64/bin:/c/Users/19081126D/Downloads/GNU-Prolog/bin/" && /c/Users/19081126D/Downloads/GNU-Prolog/bin/gplc --verbose -C '-shared -fPIC  -lws2_32 -l:libbips_fd.a -l:liblinedit.a -l:libengine_fd.a -l:libbips_pl.a -l:libengine_pl.a -L/c/Users/19081126D/Downloads/GNU-Prolog/lib -L/mingw64/lib -I/mingw64/include' main.pl main.c --object
+```
